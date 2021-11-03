@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import guru.springframework.sfgdimaster.controller.ConstructorInjectedController;
+import guru.springframework.sfgdimaster.controller.I18nController;
 import guru.springframework.sfgdimaster.controller.MyController;
 import guru.springframework.sfgdimaster.controller.PropertyInjectedController;
 import guru.springframework.sfgdimaster.controller.SetterInjectedController;
@@ -15,8 +16,12 @@ public class SfgDiMasterApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SfgDiMasterApplication.class, args);
 		
-		MyController myController = (MyController) ctx.getBean("myController");
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayHello());
 		
+		
+		MyController myController = (MyController) ctx.getBean("myController");
+
 		System.out.println("-------- Primary Bean");
 		System.out.println(myController.sayHello());
 		
