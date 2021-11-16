@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 
+import guru.springframework.pets.PetService;
+import guru.springframework.pets.PetServiceFactory;
 import guru.springframework.sfgdimaster.repository.EnglishGreetingRepository;
 import guru.springframework.sfgdimaster.repository.EnglishGreetingRepositoryImpl;
 import guru.springframework.sfgdimaster.services.ConstructorGreetingService;
@@ -16,6 +18,23 @@ import guru.springframework.sfgdimaster.services.SetterInjectedGreetingService;
 
 @Configuration
 public class GreetingServiceConfig {
+	
+	@Bean
+	PetServiceFactory petServiceFactory() {
+		return new PetServiceFactory();
+	}
+	
+	@Profile({"dog", "default"})
+	@Bean
+	PetService dogPetService(PetServiceFactory petServiceFactory) {
+		return petServiceFactory.getPetService("dog");
+	}
+	
+	@Profile({"cat"})
+	@Bean
+	PetService catPetService(PetServiceFactory catServiceFactory) {
+		return catServiceFactory.getPetService("cat");
+	}	
 	
 	@Profile("ES")
 	@Bean("i18nService") //overwrite method name with annotation
