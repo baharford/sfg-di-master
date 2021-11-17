@@ -2,6 +2,7 @@ package guru.springframework.sfgdimaster.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 
@@ -16,6 +17,7 @@ import guru.springframework.sfgdimaster.services.PrimaryGreetingService;
 import guru.springframework.sfgdimaster.services.PropertyInjectedGreetingService;
 import guru.springframework.sfgdimaster.services.SetterInjectedGreetingService;
 
+@ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
 	
@@ -59,7 +61,8 @@ public class GreetingServiceConfig {
 		return new PrimaryGreetingService();
 	}
 	
-	@Bean
+	// this bean is now defined inside the sfgdi-config.xml
+	// @Bean
 	ConstructorGreetingService constructorGreetingService() {
 		return new ConstructorGreetingService();
 	}
