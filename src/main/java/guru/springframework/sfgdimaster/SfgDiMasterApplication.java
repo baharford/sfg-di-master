@@ -10,6 +10,7 @@ import guru.springframework.sfgdimaster.controller.MyController;
 import guru.springframework.sfgdimaster.controller.PetController;
 import guru.springframework.sfgdimaster.controller.PropertyInjectedController;
 import guru.springframework.sfgdimaster.controller.SetterInjectedController;
+import guru.springframework.sfgdimaster.datasource.FakeDataSource;
 
 // must use ComponentScan as the "pets" package is outside of the package or sub-package where ASfgDiMasterApplication.java resides 
 @SpringBootApplication
@@ -41,7 +42,11 @@ public class SfgDiMasterApplication {
 		System.out.println("-------- Constructor");
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
 		System.out.println(constructorInjectedController.getGreeting());
-		
+	
+		FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
+		System.out.println(fakeDataSource.getUsername());
+		System.out.println(fakeDataSource.getPassword());
+		System.out.println(fakeDataSource.getJdbcurl());
 	}
 
 }
