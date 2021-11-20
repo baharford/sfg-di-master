@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import guru.springframework.sfgdimaster.config.SfgConfiguration;
+import guru.springframework.sfgdimaster.config.SfgConstructorConfig;
 import guru.springframework.sfgdimaster.controller.ConstructorInjectedController;
 import guru.springframework.sfgdimaster.controller.I18nController;
 import guru.springframework.sfgdimaster.controller.MyController;
@@ -55,6 +56,12 @@ public class SfgDiMasterApplication {
 		System.out.println(sfgConfiguration.getUsername());
 		System.out.println(sfgConfiguration.getPassword());
 		System.out.println(sfgConfiguration.getJdbcurl());
+		
+		System.out.println("-------- Constructor Binding");
+		SfgConstructorConfig sfgConstructorConfig = ctx.getBean(SfgConstructorConfig.class);
+		System.out.println(sfgConstructorConfig.getUsername());
+		System.out.println(sfgConstructorConfig.getPassword());
+		System.out.println(sfgConstructorConfig.getJdbcurl());
 		
 	}
 

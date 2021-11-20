@@ -1,5 +1,6 @@
 package guru.springframework.sfgdimaster.config;
 
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
@@ -18,6 +19,7 @@ import guru.springframework.sfgdimaster.services.PrimaryGreetingService;
 import guru.springframework.sfgdimaster.services.PropertyInjectedGreetingService;
 import guru.springframework.sfgdimaster.services.SetterInjectedGreetingService;
 
+@EnableConfigurationProperties(SfgConstructorConfig.class)
 @ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
