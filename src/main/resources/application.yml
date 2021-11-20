@@ -1,5 +1,5 @@
 spring: 
-    profiles:        active: dog,EN
+    profiles:        active: dog,EN,qa
 guru:
     username: ymlUserName
     password: ymlPassword    jdbcurl: ymlJDBCUrl
